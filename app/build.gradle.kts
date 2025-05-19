@@ -42,6 +42,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.material) // or latest
+    implementation(libs.face.detection)
+    implementation(libs.vision.common) // latest ML Kit face detection
+    implementation(libs.tensorflow.lite)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

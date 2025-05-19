@@ -1,18 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#CDEFEE">
 
-    <ImageView
-        android:id="@+id/previewImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="TODO"
-        android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="100dp">
+
+        <!-- Title Bar -->
+        <TextView
+            android:id="@+id/previewTitle"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="#3D4B58"
+            android:gravity="center"
+            android:text="Image Preview"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Original Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/previewImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Original Image"
+            app:shapeAppearance="@style/RoundedCornerImage"
+            app:layout_constraintTop_toBottomOf="@id/previewTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <!-- Left Eye Section -->
+
+        <TextView
+            android:id="@+id/leftEyeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:padding="6dp"
+            android:text="Left Eye"
+            android:textColor="#3D4B58"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/previewImage" />
+
+        <TextView
+            android:id="@+id/leftEyeResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3D4B58"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/leftEyeImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/leftEyeImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundedCornerImage"
+            app:layout_constraintTop_toBottomOf="@id/leftEyeLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <!-- Right Eye Section -->
+
+        <TextView
+            android:id="@+id/rightEyeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:padding="6dp"
+            android:text="Right Eye"
+            android:textColor="#3D4B58"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/leftEyeImage" />
+
+        <TextView
+            android:id="@+id/rightEyeResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3D4B58"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/rightEyeImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/rightEyeImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundedCornerImage"
+            app:layout_constraintTop_toBottomOf="@id/rightEyeLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <!-- Buttons -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRetake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/baseline_photo_camera_24"
+            app:backgroundTint="#3D4B58"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/rightEyeImage"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/baseline_check_circle_24"
+            app:backgroundTint="#3D4B58"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/rightEyeImage"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

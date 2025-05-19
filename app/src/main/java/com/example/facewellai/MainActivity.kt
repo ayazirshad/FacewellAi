@@ -19,8 +19,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +50,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // ✅ Prevents drawing under system bars
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+
+        // ✅ Actually sets status bar color (safely use even if deprecated)
+        @Suppress("DEPRECATION")
+        window.statusBarColor = ContextCompat.getColor(this, R.color.darkHeader)
+
+        // ✅ Set white icons (since your bg is dark)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
 
         viewPager = findViewById(R.id.viewPager)
         descriptionText = findViewById(R.id.slideDescription)

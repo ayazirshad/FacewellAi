@@ -5,4 +5,5 @@
     <color name="accentGray">#8B9AAB</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="darkHeader">#3D4B58</color>
 </resources>
