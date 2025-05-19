@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.0"
+cameraCore = "1.4.2"
 faceDetection = "16.1.7"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
@@ -14,6 +15,11 @@ tensorflowLite = "2.13.0"
 visionCommon = "17.3.0"
 
 [libraries]
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCore" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
+androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "cameraCore" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraCore" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraCore" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 face-detection = { module = "com.google.mlkit:face-detection", version.ref = "faceDetection" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
