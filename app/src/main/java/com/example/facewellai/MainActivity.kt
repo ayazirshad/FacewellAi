@@ -113,17 +113,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showCameraOptions() {
-        val options = arrayOf("Open Camera", "Select from Gallery")
+        val options = arrayOf("Live Face Detection", "System Camera", "Select from Gallery")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Choose Option")
         builder.setItems(options) { _, which ->
             when (which) {
-                0 -> openLiveCamera()
-                1 -> openGallery()
+                0 -> {
+                    // ✅ Live Face Detection
+                    val intent = Intent(this, LiveFaceCaptureActivity::class.java)
+                    startActivity(intent)
+                }
+                1 -> {
+                    // ✅ System Camera
+                    val photoFile = File.createTempFile("IMG_", ".jpg", getExternalFilesDir(Environment.DIRECTORY_PICTURES))
+                    imageUri = FileProvider.getUriForFile(this, "$packageName.provider", photoFile)
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+                    cameraLauncher.launch(intent)
+                }
+                2 -> {
+                    // ✅ Select from Gallery
+                    openGallery()
+                }
             }
         }
         builder.show()
     }
+
 
     private fun openLiveCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
